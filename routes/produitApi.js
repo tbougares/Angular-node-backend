@@ -1,9 +1,13 @@
 const express = require('express');
 const schemaCat = require('../models/categories.js');
 const router = express.Router();
-const schemaProduit=require('../models/produit.js')
+const schemaProduit=require('../models/produit.js');
+const midlewar =require('../midelwar/auth.js');
 
-router.post('/Createproduit', async (req, res) => {
+router.post('/Createproduit', midlewar , async (req, res ) => {
+   // const token = req.headers.authorization.split(' ')[1];
+   //      console.log(token,"token");
+   //      console.log(req.headers,"header");
    var produitTest=await schemaProduit.findOne({refProd:req.body.refProd})
    if(!produitTest){
    var produit = await  schemaProduit.create(req.body);
@@ -47,8 +51,8 @@ router.delete('/DeleteProduit/:id', async (req, res) => {
       })
       var produits = await  schemaProduit.find();
    
- 
-  res.send(produits)
+
+res.send(produits)
 
  })
 router.get('/GetAllProduit', async (req, res) => {
@@ -56,6 +60,7 @@ router.get('/GetAllProduit', async (req, res) => {
    res.send(produits)
 
 })
+//midzlwar nn f getall 5atyr client lazem ychoufouh
 router.get('/:id' , async (req, res) => {
    var produit= await schemaProduit.findById(req.params.id)
    res.send(produit)
