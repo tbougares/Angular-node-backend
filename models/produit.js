@@ -19,6 +19,7 @@ const  produitSchema  = new mongoose.Schema({
     promo:Number,
     type:String,
     photosProd:[],
+    keywords:[],
     CategoriProd:{type: Schema.Types.ObjectId, ref:'categories'} //cle premair de categories
 
 

@@ -49,6 +49,7 @@ router.delete('/DeleteCategorie/:id', async (req, res) => {
  })
 router.get('/GetAllCategorie', async (req, res) => {
    var categories = await  schemacategories.find().populate('ProduitCat');
+   console.log(categories);
    res.send(categories)
 
 })

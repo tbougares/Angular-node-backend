@@ -8,8 +8,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
-  });
-  const port=1000//y
+});
+const port=1000//y
 app.use(express.json({ extended: false, limit: '50mb' }))
 app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 50000 }))
 const connect = require('./dataBase/connect')
@@ -18,6 +18,8 @@ const produitApi = require('./routes/produitApi')
 const EmailApi = require('./routes/EmailApi')
 const clientApi = require('./routes/clientApi')
 const cat = require('./routes/cat')
+const admin = require('./routes/admin')
+const CommandeApi = require('./routes/CommandeApi')
 
 const path =require('path')
 const multer =require('multer')
@@ -26,6 +28,8 @@ app.use('/categorie',cat)
 app.use('/produit',produitApi)
 app.use('/Email',EmailApi)
 app.use('/Client',clientApi)
+app.use('/Commande',CommandeApi)
+app.use('/Admin',admin)
 
 
     //multer
